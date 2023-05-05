@@ -1,9 +1,14 @@
 import xml.etree.ElementTree as ET
 import sys
 
+# Check if the filename was passed as an argument
+if len(sys.argv) == 1:
+    print("*** Please pass in the name of the file you would like to parse. ex: 'python3 parse.py filename.brd'")
+    sys.exit()
+
 # Load the board file
-tree = ET.parse(str(sys.argv[1]))
-# tree = ET.parse("filename.brd")
+tree = ET.parse(sys.argv[1])
+# tree = ET.parse("filename.brd") 
 
 root = tree.getroot()
 
@@ -31,6 +36,6 @@ for element in elements_info:
 
 # Print the results
 print("Number of layers:", num_layers)
-print("Board area (mm^2):", board_area) # assuming it's in milimeters, but is it?
+print("Board area (mm^2):", board_area) # assuming it's in millimeters, but is it?
 print("IC:", ic_name) 
 
